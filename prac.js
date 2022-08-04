@@ -7,8 +7,10 @@ var output = document.querySelector('.output')
 const availableNotes = [2000, 500, 100, 50, 20, 10, 5, 1]
 
 btnCheck.addEventListener('click', function validateBillAndCashAmount() {
-
-    if (billAmount.value > 0) {
+if(cashGiven.value=== ''){
+    output.innerText  = 'please fill both the fields'
+}
+    else if (billAmount.value > 0) {
 
         if (Number(cashGiven.value) >= Number(billAmount.value)) {
             const amountToBeReturned = cashGiven.value - billAmount.value
@@ -21,11 +23,16 @@ btnCheck.addEventListener('click', function validateBillAndCashAmount() {
                     notes[i].innerText = noOfNotes
                 }
             }
-        } else {
+        } 
+        else {
             output.innerText = 'do u wanna wash plates?'
         }
 
-    } else {
-        output.innerText = 'Invalid input'
+    }
+    else if (billAmount.value && cashGiven.value<0){
+        output.innerText = 'invalid input'
+    } 
+     else {
+        output.innerText = 'please fill both the fields'
     }
 })
