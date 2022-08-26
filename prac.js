@@ -3,6 +3,7 @@ var cashGiven = document.querySelector('#cash-given')
 var btnCheck = document.querySelector('#btn-check')
 var notes = document.querySelectorAll('.new')
 var output = document.querySelector('.output')
+let output2 = document.querySelector('.output2')
 
 const availableNotes = [2000, 500, 100, 50, 20, 10, 5, 1]
 
@@ -14,6 +15,7 @@ if(cashGiven.value=== ''){
 
         if (Number(cashGiven.value) >= Number(billAmount.value)) {
             const amountToBeReturned = cashGiven.value - billAmount.value
+            output2.innerText = `Returned amount: ${amountToBeReturned}`
             calculateChange(amountToBeReturned)
 
             function calculateChange(amountToBeReturned) {
@@ -21,6 +23,7 @@ if(cashGiven.value=== ''){
                     const noOfNotes = Math.trunc(amountToBeReturned / availableNotes[i])
                     amountToBeReturned = amountToBeReturned % availableNotes[i]
                     notes[i].innerText = noOfNotes
+                    
                 }
             }
         } 
